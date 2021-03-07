@@ -77,6 +77,8 @@ class StackLifoQueue:
       
 
 #LinkedList Implementation
+#with Min Stack implementation
+#push, pop , min in o(1)
 class Node:
     def __init__(self, value):
         self.data = value
@@ -86,6 +88,7 @@ class StackLinkedList:
     def __init__(self):
         self.head = Node("head")
         self.size = 0
+        self.min = None
 
     def get_size(self):
         return self.size
@@ -94,6 +97,12 @@ class StackLinkedList:
         return self.size == 0
       
     def push(self, value):
+        if self.size == 0:
+            self.min = value
+        elif value < self.min:
+            self.min = value
+            value = (2*value) - self.min
+
         node = Node(value)
         node.next  = self.head.next
         self.head.next =  node
@@ -102,6 +111,9 @@ class StackLinkedList:
     def pop(self):
         temp = self.head.next
         self.head.next =  temp.next
+        if temp.data < self.min:
+            self.min = 2*self.min - temp.data
+            
         return temp.data
 
     def __str__(self):
@@ -111,7 +123,10 @@ class StackLinkedList:
           out = out + str(temp.data) + "->"
           temp = temp.next
       return out
-      
+    
+    def get_min(self):
+        return self.min
+
     def peek(self):
         if self.is_empty():
             print("Empty Stack")

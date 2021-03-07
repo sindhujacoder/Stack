@@ -25,6 +25,12 @@ print('Stack using LinkedList')
 stack_linkedlist = StackLinkedList()
 for i in range(30, 40):
   stack_linkedlist.push(i)
+stack_linkedlist.push(1)
+stack_linkedlist.push(7)
+stack_linkedlist.push(5)
 print(stack_linkedlist)
 print('Top element  with  peek')
 print(stack_linkedlist.peek())
+
+print('Minimum element in stack')
+print(stack_linkedlist.get_min())
