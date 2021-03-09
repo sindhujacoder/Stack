@@ -7,21 +7,31 @@
 class StackList:
     def __init__(self):
         self.stack  = []
-        
+        self.size = 0
 
     def add(self, value):
         #o(n) time complexity
         self.stack.append(value)
+        self.size += 1
   
     def delete(self):
         #o(n) time  complexity
-        if len(self.stack):
+        if self.size > 0:
+            
+            self.size -= 1
             return self.stack.pop()
         else:
             return  None
     
+    def is_empty(self):
+        return self.size == 0
+    
+    def peek(self):
+        if not self.is_empty():
+            return self.stack[-1]
+    
     def __iter__(self):
-        for i in range(len(self.stack)-1, 0, -1):
+        for i in range(self.size-1, -1, -1):
             yield self.stack.pop()
             
   

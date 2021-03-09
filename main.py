@@ -1,4 +1,5 @@
 from Stack import StackList, StackDeQueue, StackLifoQueue, StackMinLinkedList
+from sort_a_stack import  sort
 
 print('Stack using List')
 stack = StackList()
@@ -34,3 +35,13 @@ print(stack_linkedlist.peek())
 
 print('Minimum element in stack')
 print(stack_linkedlist.get_min())
+
+print('Sort a stack')
+unsorted_stack = StackList()
+unsorted_stack.add(4)
+unsorted_stack.add(8)
+unsorted_stack.add(3)
+unsorted_stack.add(7)
+unsorted_stack.add(2)
+unsorted_stack.add(10)
+sort(unsorted_stack)
