@@ -7,6 +7,7 @@
 class StackList:
     def __init__(self):
         self.stack  = []
+        
 
     def add(self, value):
         #o(n) time complexity
@@ -84,11 +85,11 @@ class Node:
         self.data = value
         self.next = None
     
-class StackLinkedList:
+class StackMinLinkedList:
     def __init__(self):
         self.head = Node("head")
         self.size = 0
-        self.min = None
+        self.min = []
 
     def get_size(self):
         return self.size
@@ -97,11 +98,9 @@ class StackLinkedList:
         return self.size == 0
       
     def push(self, value):
-        if self.size == 0:
-            self.min = value
-        elif value < self.min:
-            self.min = value
-            value = (2*value) - self.min
+
+        if self.size == 0 or self.min[-1] > value:
+            self.min.append(value)
 
         node = Node(value)
         node.next  = self.head.next
@@ -111,9 +110,11 @@ class StackLinkedList:
     def pop(self):
         temp = self.head.next
         self.head.next =  temp.next
-        if temp.data < self.min:
-            self.min = 2*self.min - temp.data
+
+        if len(self.min) >0 and temp.data == self.min[-1]:
+            self.min.pop()
             
+        self.size -= 1
         return temp.data
 
     def __str__(self):
@@ -125,7 +126,7 @@ class StackLinkedList:
       return out
     
     def get_min(self):
-        return self.min
+        return self.min[-1]
 
     def peek(self):
         if self.is_empty():

@@ -1,4 +1,4 @@
-from Stack import StackList, StackDeQueue, StackLifoQueue, StackLinkedList
+from Stack import StackList, StackDeQueue, StackLifoQueue, StackMinLinkedList
 
 print('Stack using List')
 stack = StackList()
@@ -22,7 +22,7 @@ for each in stack_lifoqueue:
   print(each)
 
 print('Stack using LinkedList')
-stack_linkedlist = StackLinkedList()
+stack_linkedlist = StackMinLinkedList()
 for i in range(30, 40):
   stack_linkedlist.push(i)
 stack_linkedlist.push(1)
